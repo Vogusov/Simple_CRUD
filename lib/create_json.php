@@ -3,7 +3,7 @@
 function createJson(array $data, int $qnt) {
     $result_array = [];
 
-    for ($i = 0; $i <= $qnt; ++$i) {
+    for ($i = 1; $i <= $qnt; $i++) {
         $item_data = [];
         $item_data['id'] = $i;
         foreach ($data as $title => $value) {
@@ -23,4 +23,4 @@ $data = [
 ];
 $arr = createJson($data, 6);
 var_dump($arr);
-//file_put_contents(__DIR__ . '/../users.json', $arr);
+file_put_contents(__DIR__ . '/../users.json', $arr);
