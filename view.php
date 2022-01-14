@@ -43,7 +43,9 @@ if (!$user) {
                 </tr>
                 <tr>
                     <th>Website:</th>
-                    <td><?= $user['website'] ?></td>
+                    <td>
+                        <a href="http://<?= $user['website'] ?>"><?= $user['website'] ?></a>
+                    </td>
                 </tr>
 
                 </tbody>

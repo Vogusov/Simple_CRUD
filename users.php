@@ -1,23 +1,32 @@
 <?php
 
-function getUsers(){
+function getUsers() {
     return json_decode(file_get_contents(__DIR__ . '/users.json'), true);
 }
 
-function getUserById($id){
+function getUserById($id) {
     $users = getUsers();
-    foreach($users as $user){
-        if ($user['id'] == $id){
+    foreach ($users as $user) {
+        if ($user['id'] == $id) {
             return $user;
         }
     }
     return null;
 }
 
-function createUser($data){
+function createUser($data) {
 
 }
 
-function updateUser($data, $id){
-
+function updateUser($data, $id) {
+    $users = getUsers();
+    foreach ($users as $i => $user) {
+        if ($user['id'] == $id) {
+            $users[$i] = array_merge($user, $data);
+        }
+    }
+    echo '<pre>';
+    var_dump($users);
+    echo '</pre>';
+    file_put_contents(__DIR__ . '/users.json', json_encode($users));
 }
