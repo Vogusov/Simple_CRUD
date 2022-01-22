@@ -10,6 +10,7 @@ include __DIR__ . '/partials/header.php';
 
         <thead>
         <tr>
+            <th>Image</th>
             <th>Name</th>
             <th>Username</th>
             <th>Email</th>
@@ -21,6 +22,11 @@ include __DIR__ . '/partials/header.php';
         <tbody>
         <?php foreach ($users as $user): ?>
             <tr>
+                <td>
+                    <?php if (isset($user['extension'])): ?>
+                    <img src="<?= "users/images/{$user['id']}.{$user['extension']}" ?>" alt="a picture of user" width="60px">
+                    <?php endif; ?>
+                </td>
                 <td><?= $user['name'] ?></td>
                 <td><?= $user['username'] ?></td>
                 <td><?= $user['email'] ?></td>

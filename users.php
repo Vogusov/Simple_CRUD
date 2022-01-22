@@ -19,14 +19,18 @@ function createUser($data) {
 }
 
 function updateUser($data, $id) {
+    $updateUser = [];
     $users = getUsers();
     foreach ($users as $i => $user) {
         if ($user['id'] == $id) {
-            $users[$i] = array_merge($user, $data);
+            $users[$i] = $updateUser = array_merge($user, $data);
         }
     }
-    echo '<pre>';
-    var_dump($users);
-    echo '</pre>';
-    file_put_contents(__DIR__ . '/users.json', json_encode($users));
+//    echo '<pre>';
+//    var_dump($users);
+//    echo '</pre>';
+    file_put_contents(__DIR__ . '/users.json', json_encode($users, JSON_PRETTY_PRINT));
+
+    return $updateUser;
+
 }
